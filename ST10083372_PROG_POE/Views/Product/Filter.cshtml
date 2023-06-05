@@ -1,0 +1,143 @@
+﻿
+
+@model List<Product>
+
+<style>
+    h2 {
+        font-size: 24px;
+        color: #343a40;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #343a40;
+        display: inline-block;
+        width: 120px;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="submit"] {
+        border: 1px solid #ced4da;
+        padding: 10px;
+        border-radius: 4px;
+        width: 200px;
+    }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #ffffff;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+    h3 {
+        font-size: 20px;
+        color: #343a40;
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    p {
+        color: #343a40;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+</style>
+
+<h2>Filter Products</h2>
+
+@using (Html.BeginForm("Filter", "Product", FormMethod.Post))
+{
+    @*inputs for filter*@
+
+    <div>
+        <label>Product Name:</label>
+        <input type="text" name="productName" />
+    </div>
+
+    <div>
+        <label>Start Date:</label>
+        <input type="date" name="startDate" />
+    </div>
+
+    <div>
+        <label>End Date:</label>
+        <input type="date" name="endDate" />
+    </div>
+
+    <div>
+        <label>Product Type:</label>
+        <input type="text" name="productType" />
+    </div>
+
+    <div>
+        <input type="submit" value="Filter" />
+    </div>
+}
+
+@if (Model != null && Model.Count > 0)//filtering code
+{
+    <h3>Filtered Products</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Supply Date</th>
+                <th>Product Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductName</td>
+                    <td>@product.SupplyDate.ToShortDateString()</td>@*code was developed with the help of TutorialsPoint, DateTime.ToShortString() Method in C#. You can 
+                        find it at : https://www.tutorialspoint.com/datetime-toshortdatestring-method-in-chash#:~:text=ToShortDateString()%20method%20in%20C%23%20is%20used%20to%20convert%20the,equivalent%20short%20date%20string%20representation.
+                    *@
+                    <td>@product.ProductType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No products found.</p>
+}
+

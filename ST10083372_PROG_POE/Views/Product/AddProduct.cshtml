@@ -1,0 +1,72 @@
+﻿@model ST10083372_PROG_POE.Models.Product
+
+<style>
+    h2 {
+        font-size: 24px;
+        color: #343a40;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 0;
+        border: 1px solid #ced4da;
+        padding: 10px;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+    .validation-message {
+        color: #dc3545;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+</style>
+
+<h2>Add Product</h2>
+
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">@*input for product name*@
+        @Html.LabelFor(m => m.ProductName)
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductName)
+    </div>
+
+    <div class="form-group"> @*input for the date it was supplied*@
+        @Html.LabelFor(m => m.SupplyDate)
+        @Html.TextBoxFor(m => m.SupplyDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.SupplyDate)
+    </div>
+
+    <div class="form-group"> @*input for product type*@
+        @Html.LabelFor(m => m.ProductType)
+        @Html.TextBoxFor(m => m.ProductType, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductType)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Product</button>
+}

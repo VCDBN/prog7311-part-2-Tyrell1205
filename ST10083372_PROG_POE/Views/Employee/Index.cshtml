@@ -1,0 +1,73 @@
+﻿@model FarmersDB.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+@*all HTML and CSS code was developed with the help of W3Schools, HTML Element Reference and CSS Tutorial. You can find it at:
+    https://www.w3schools.com/tags/ - HTML
+    https://www.w3schools.com/css/default.asp - CSS
+*@
+
+<style>
+    
+    .container {
+        margin-top: 100px;
+        margin-bottom: 60px;
+        
+    }
+
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #343a40;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+</style>
+
+<div class = "container">
+    <div class="form-container">
+<h2>Login</h2>
+
+@using (Html.BeginForm("Index", "Employee", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">@*input for email*@
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)@*input for password*@
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+}
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,73 @@
+﻿@model ST10083372_PROG_POE.Models.Farmer
+
+@{
+    ViewBag.Title = "Create Farmer";
+}
+
+<style>
+    h2 {
+        font-size: 24px;
+        color: #343a40;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 0;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 0;
+    }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+</style>
+
+<h2>Add Farmer</h2>
+
+@using (Html.BeginForm("Create", "Farmer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">@*input for farmer name*@
+        @Html.LabelFor(m => m.FarmerName)
+        @Html.TextBoxFor(m => m.FarmerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FarmerName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @*input for farmer email*@
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">@*giving the farmer a password*@
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+
+  
+}
+
+
+
