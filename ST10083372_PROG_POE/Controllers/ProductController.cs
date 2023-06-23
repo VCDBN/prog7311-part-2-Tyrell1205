@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ST10083372_PROG_POE.Models;
 
-
 namespace ST10083372_PROG_POE.Controllers
 {
     public class ProductController : Controller

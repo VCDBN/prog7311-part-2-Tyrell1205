@@ -8,8 +8,20 @@
         margin-bottom: 20px;
     }
 
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        background-color: #343a40;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
     .form-group {
         margin-bottom: 20px;
+        text-align: center;
     }
 
     .form-control {
@@ -49,7 +61,7 @@
 @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+     <div class="form-container">
     <div class="form-group">@*input for product name*@
         @Html.LabelFor(m => m.ProductName)
         @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
@@ -69,4 +81,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Add Product</button>
+    </div>
 }

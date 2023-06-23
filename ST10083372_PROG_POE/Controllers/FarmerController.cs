@@ -37,7 +37,7 @@ namespace ST10083372_PROG_POE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Create", "Farmer");//redirect to the add farmer page
             }
-
+           
             return View(farmer);
         }
     }

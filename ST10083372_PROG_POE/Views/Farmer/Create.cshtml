@@ -12,8 +12,21 @@
         margin-bottom: 20px;
     }
 
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        background-color: #343a40;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
     .form-group {
         margin-bottom: 20px;
+        text-align: center;
     }
 
     .form-control {
@@ -28,6 +41,7 @@
         background-color: #007bff;
         border-color: #007bff;
         border-radius: 0;
+        margin-top: 10px;
     }
 
         .btn-primary:hover {
@@ -43,6 +57,7 @@
 {
     @Html.AntiForgeryToken()
 
+    <div class="form-container">
     <div class="form-group">@*input for farmer name*@
         @Html.LabelFor(m => m.FarmerName)
         @Html.TextBoxFor(m => m.FarmerName, new { @class = "form-control" })
@@ -64,6 +79,8 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+
     </div>
 
   
